@@ -158,18 +158,22 @@
         
         function uploadMediaToStorage(response) {
             jobId = response.id;
-            
-            $.ajax({
+        
+            fetch(response.target_url, {
                 method: "PUT",
-                url: response.target_url,
-                data: file,
-                processData: false,
-                contentType: false
-            }).done(markJobAsReady).fail(function () {
+                body: file,
+                // Do NOT include any headers – avoid 'Content-Type'
+            }).then(res => {
+                if (res.ok) {
+                    markJobAsReady(response);
+                } else {
+                    showErrorModal("Failed to upload file to remote storage (status " + res.status + ").");
+                }
+            }).catch(() => {
                 showErrorModal("Failed to upload file to remote storage.");
             });
         }
-        
+
         function showErrorModal(errorMessage) {
             $("#error-element").text("An error occurred. " + errorMessage);
             $("#error-modal").modal("show");
