@@ -33,7 +33,7 @@ jobs:
             NuGet_SourceUserName=${{ github.repository_owner }}
             NuGet_SourcePassword=${{ secrets.GHCR_INSTALL_PAT }}
           tags: |
-            ghcr.io/AToska21/bluebirddx:latest
+            ghcr.io/atoska21/bluebirddx:latest
       - name: Build WebApp
         uses: docker/build-push-action@v5
         with:
@@ -46,7 +46,7 @@ jobs:
             NuGet_SourceUserName=${{ github.repository_owner }}
             NuGet_SourcePassword=${{ secrets.GHCR_INSTALL_PAT }}
           tags: |
-            ghcr.io/AToska21/bluebirddxwebapp:latest
+            ghcr.io/atoska21/bluebirddxwebapp:latest
       - name: Build TextWrapper
         uses: docker/build-push-action@v5
         with:
@@ -58,7 +58,7 @@ jobs:
             NuGet_SourceUserName=${{ github.repository_owner }}
             NuGet_SourcePassword=${{ secrets.GHCR_INSTALL_PAT }}
           tags: |
-            ghcr.io/AToska21/bluebirddxtextwrapper:latest
+            ghcr.io/atoska21/bluebirddxtextwrapper:latest
   api-library-build:
     runs-on: ubuntu-latest
 
